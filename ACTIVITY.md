@@ -19,7 +19,7 @@ Approved PR: https://github.com/nickdubbel/CS4295_FinalProject/pull/2
 # A2
 
 -- Esha: -- \
-Created PR:  https://github.com/Release-Engineering-Group-13/app/pull/1\
+Created PR:  https://github.com/Release-Engineering-Group-13/app/pull/1 \
 Approved PR: https://github.com/Release-Engineering-Group-13/model-training/pull/2
 
 -- Maarten: -- \
