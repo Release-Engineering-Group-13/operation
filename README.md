@@ -25,8 +25,9 @@ Link to elaboration on code quality: [codequality.md](Assignment%201/codequality
 ## Assignment 2
 Submission file: [submission_a2.md](submission%20files/submission_a2.md)
 
-- model-training has removed the preprocessing, and uses pylint/dslinter and flake8 in a workflow. It does not yet publically store the model
+- operation does not have docker compose yet, so parts should be run individually
+- model-training has removed the preprocessing, and uses pylint/dslinter and flake8 in a workflow.
 - lib-ml is completely done as requested
-- model-service ...
+- model-service does not fetch model from cloud yet, and the workflow doesn't work yet
 - lib-version ...
 - app ...
