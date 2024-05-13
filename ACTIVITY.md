@@ -15,3 +15,21 @@ Approved PR: https://github.com/Release-Engineering-Group-13/CS4295_FinalProject
 -- Vanessa: -- \
 Created PR: https://github.com/Release-Engineering-Group-13/CS4295_FinalProject/pull/4 \
 Approved PR: https://github.com/nickdubbel/CS4295_FinalProject/pull/2
+
+# A2
+
+-- Esha: -- \
+Created PR: \
+Approved PR: 
+
+-- Maarten: -- \
+Created PR: https://github.com/Release-Engineering-Group-13/lib-ml/pull/1 \
+Approved PR: 
+
+-- Nick: -- \
+Created PR:  \
+Approved PR: 
+
+-- Vanessa: -- \
+Created PR:  \
+Approved PR: 
