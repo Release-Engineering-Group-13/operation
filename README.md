@@ -15,12 +15,16 @@ TODO
 The required document with at least one created and one reviewed PR is [ACTIVITY.md](https://github.com/Release-Engineering-Group-13/operation/blob/main/ACTIVITY.md)
 
 ## Assignment 1
-Link to code repository: [Assignment 1](https://github.com/Release-Engineering-Group-13/CS4295_FinalProject/tree/a1)
+Submission file: [submission_a1.md](submission%20files/submission_a1.md) \
+Link to code repository: [Assignment 1](https://github.com/Release-Engineering-Group-13/CS4295_FinalProject/tree/a1).
+
 Everything that was needed is implemented
 
 Link to elaboration on code quality: [codequality.md](Assignment%201/codequality.md) 
 
 ## Assignment 2
+Submission file: [submission_a2.md](submission%20files/submission_a2.md) \
+
 - model-training has removed the preprocessing, and uses pylint/dslinter and flake8 in a workflow. It does not yet publically store the model
 - lib-ml is completely done as requested
 - model-service ...
