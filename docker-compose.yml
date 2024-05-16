@@ -1,0 +1,20 @@
+services:
+  serve-model:
+    image: ghcr.io/release-engineering-group-13/model-service:latest 
+    ports:
+      - 8080:8080
+    volumes:
+      - ./output:/root/output/
+    networks:
+      - default-network
+
+  app: 
+    image: ghcr.io/release-engineering-group-13/app:latest
+    ports:
+      - 8081:8081
+    networks:
+      - default-network
+
+networks:
+  default-network:
+    driver: bridge
