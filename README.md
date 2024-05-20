@@ -4,6 +4,17 @@ This is the operation repository of group 13. Here you will find relevant links 
 ## Running
 TODO
 
+## How to run docker-compose:
+0. If the trained model has not been downloaded yet, install ellipsis and fetch the model. Otherwise, ignore this step
+    ```bash
+    pip install ellipsis
+    python fetch_model.py
+    ```
+2. Pull and run the images 
+     ```bash
+    docker-compose up
+    ```
+
 ## Repos
 - [model-training](https://github.com/Release-Engineering-Group-13/model-training)
 - [lib-ml](https://github.com/Release-Engineering-Group-13/lib-ml)
