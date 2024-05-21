@@ -33,3 +33,26 @@ Approved PR: https://github.com/Release-Engineering-Group-13/model-training/pull
 -- Vanessa: -- \
 Created PR:  https://github.com/Release-Engineering-Group-13/model-service/pull/1 \
 Approved PR: https://github.com/Release-Engineering-Group-13/lib-ml/pull/1
+
+
+# A3
+
+-- Esha: -- \
+Created PR:   \
+Approved PR: 
+
+-- Maarten: -- \
+Created PR:  \
+Approved PR: 
+
+-- Nick: -- \
+Created PR:  https://github.com/Release-Engineering-Group-13/model-service/pull/3 \
+Approved PR: https://github.com/Release-Engineering-Group-13/operation/pull/2
+
+-- Vanessa: -- \
+Created PR:   \
+Approved PR: 
+
+
+
+
