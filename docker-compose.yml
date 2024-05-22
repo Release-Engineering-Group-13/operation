@@ -1,0 +1,29 @@
+services:
+  serve-model:
+    image: ghcr.io/release-engineering-group-13/model-service:latest 
+    ports:
+      - 8080:8080
+    volumes:
+      - ./model:/root/model/
+    networks:
+      - default-network
+
+  frontend:
+    image: ghcr.io/release-engineering-group-13/app/frontend:latest
+    ports:
+      - "5000:5000"
+    networks:
+      - default-network
+
+  backend: 
+    image: ghcr.io/release-engineering-group-13/app/backend:latest
+    ports:
+      - 8081:8081
+    networks:
+      - default-network
+    depends_on:
+      - frontend
+
+networks:
+  default-network:
+    driver: bridge
