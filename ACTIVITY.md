@@ -43,14 +43,14 @@ Approved PR:
 
 -- Maarten: -- \
 Created PR:  https://github.com/Release-Engineering-Group-13/operation/pull/2 \
-Approved PR: https://github.com/Release-Engineering-Group-13/model-service/pull/2
+Approved PR: https://github.com/Release-Engineering-Group-13/operation/pull/1
 
 -- Nick: -- \
 Created PR:  https://github.com/Release-Engineering-Group-13/model-service/pull/3 \
 Approved PR: https://github.com/Release-Engineering-Group-13/operation/pull/2
 
 -- Vanessa: -- \
-Created PR:  https://github.com/Release-Engineering-Group-13/operation/pull/1/files \
+Created PR:  https://github.com/Release-Engineering-Group-13/operation/pull/1 \
 Approved PR: 
 
 

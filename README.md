@@ -10,12 +10,14 @@ TODO
     pip install ellipsis
     python fetch_model.py
     ```
-2. Pull and run the images 
+1. Pull and run the images 
      ```bash
     docker-compose up
     ```
+2. The frontend is not working yet, but you can access the model-service through localhost:8080/apidocs. You can also query the model there.
 
 ## Repos
+**DISCLAIMER:** These are not the repos to look at for the review process; instead use the links provided in the submission file. This is because some of the features are not in the main branch yet, while the links below point only to there.
 - [model-training](https://github.com/Release-Engineering-Group-13/model-training)
 - [lib-ml](https://github.com/Release-Engineering-Group-13/lib-ml)
 - [model-service](https://github.com/Release-Engineering-Group-13/model-service)
@@ -36,9 +38,18 @@ Link to elaboration on code quality: [codequality.md](Assignment%201/codequality
 ## Assignment 2
 Submission file: [submission_a2.md](submission%20files/submission_a2.md)
 
-- operation does not have docker compose yet, so parts should be run individually
+- operation has a docker-compose
 - model-training has removed the preprocessing, and uses pylint/dslinter and flake8 in a workflow.
 - lib-ml is completely done as requested
-- model-service does not fetch model from cloud yet, and the workflow doesn't work yet
-- lib-version ...
-- app does not use lib-version in the frontend yet
+- model-service is working fully
+- lib-version works too
+- app is currently not working yet
+
+## Assignment 3
+Submission file: [submission_a3.md](submission%20files/submission_a3.md)
+
+We did not have a lot of time, so for this assignment specifically there is not a lot. \
+We did not really figure out how to deploy a kubernetes, so any hints on that would be very welcome!
+
+- A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
+- An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
