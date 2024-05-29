@@ -16,9 +16,9 @@ spec:
     spec:
       containers:
       - name: model-service
-        image: ghcr.io/release-engineering-group-13/model-service:latest
+        image: ghcr.io/release-engineering-group-13/model-service:{{.Values.model_service.version }}
         ports:
-        - containerPort: 8080
+        - containerPort: {{.Values.model_service.port }}
         volumeMounts:
         - name: model-volume
           mountPath: /root/model
@@ -35,8 +35,8 @@ spec:
   selector:
     app: model-service
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: {{.Values.model_service.port }}
+    targetPort: {{.Values.model_service.port }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -56,9 +56,9 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ghcr.io/release-engineering-group-13/app/frontend:latest
+        image: ghcr.io/release-engineering-group-13/app/frontend:{{.Values.frontend.version }}
         ports:
-        - containerPort: 5000
+        - containerPort: {{.Values.frontend.port }}
 ---
 apiVersion: v1
 kind: Service
@@ -68,8 +68,8 @@ spec:
   selector:
     app: frontend
   ports:
-  - port: 5000
-    targetPort: 5000
+  - port: {{.Values.frontend.port }}
+    targetPort: {{.Values.frontend.port }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -89,9 +89,9 @@ spec:
     spec:
       containers:
       - name: backend
-        image: ghcr.io/release-engineering-group-13/app/backend:latest
+        image: ghcr.io/release-engineering-group-13/app/backend:{{.Values.backend.version }}
         ports:
-        - containerPort: 8081
+        - containerPort: {{.Values.backend.port }}
 ---
 apiVersion: v1
 kind: Service
@@ -101,8 +101,8 @@ spec:
   selector:
     app: backend
   ports:
-  - port: 8081
-    targetPort: 8081
+  - port: {{.Values.backend.port }}
+    targetPort: {{.Values.backend.port }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -119,19 +119,19 @@ spec:
           service:
             name: model-service
             port:
-              number: 8080
+              number: {{.Values.model_service.port }}
       - path: /frontend
         pathType: Prefix
         backend:
           service:
             name: frontend-service
             port:
-              number: 5000
+              number: {{.Values.frontend.port }}
       - path: /backend
         pathType: Prefix
         backend:
           service:
             name: backend-service
             port:
-              number: 8081
+              number: {{.Values.backend.port }}
 
