@@ -1,0 +1,12 @@
+# values.yaml
+model_service:
+  version: latest
+  port: 8080
+
+frontend:
+  version: latest
+  port: 5000
+
+backend:
+  version: latest
+  port: 8081
