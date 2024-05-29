@@ -1,0 +1,53 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install dependencies
+      apt:
+        name: ['curl', 'apt-transport-https', 'ca-certificates', 'software-properties-common']
+        state: present
+        update_cache: yes
+
+- hosts: controller
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Add user to Docker group
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+
+    - name: Install k3d
+      shell: |
+        curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+
+    - name: Create k3d cluster
+      shell: k3d cluster create mycluster --api-port 6550 -p "8080:80@loadbalancer" --agents {{ groups['worker'].|length }} --k3s-arg "--disable=traefik@server:0"
+
+- hosts: worker
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Add user to Docker group
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Configure kubeconfig for host
+      shell: k3d kubeconfig merge mycluster --switch
+      delegate_to: controller
