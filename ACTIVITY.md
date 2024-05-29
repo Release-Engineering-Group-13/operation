@@ -54,5 +54,19 @@ Created PR:  https://github.com/Release-Engineering-Group-13/operation/pull/1 \
 Approved PR: 
 
 
+# A4
+
+-- Maarten: -- \
+Created PR:  https://github.com/Release-Engineering-Group-13/operation/pull/4 \
+Approved PR: https://github.com/Release-Engineering-Group-13/model-training/pull/5
+
+-- Nick: -- \
+Created PR:  https://github.com/Release-Engineering-Group-13/model-service/pull/5 \
+Approved PR: https://github.com/Release-Engineering-Group-13/operation/pull/4
+
+-- Vanessa: -- \
+Created PR:  https://github.com/Release-Engineering-Group-13/model-training/pull/5 \
+Approved PR: https://github.com/Release-Engineering-Group-13/model-service/pull/5
+
 
 
