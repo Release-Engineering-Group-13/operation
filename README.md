@@ -14,7 +14,7 @@ TODO
      ```bash
     docker-compose up
     ```
-2. The frontend is not working yet, but you can access the model-service through localhost:8080/apidocs. You can also query the model there.
+2. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
 
 ## Repos
 **DISCLAIMER:** These are not the repos to look at for the review process; instead use the links provided in the submission file. This is because some of the features are not in the main branch yet, while the links below point only to there.
@@ -50,6 +50,15 @@ Submission file: [submission_a3.md](submission%20files/submission_a3.md)
 
 We did not have a lot of time, so for this assignment specifically there is not a lot. \
 We did not really figure out how to deploy a kubernetes, so any hints on that would be very welcome!
+
+- A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
+- An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
+
+## Assignment 4
+Submission file: [submission_a4.md](submission%20files/submission_a4.md)
+
+The tests are added
+We finished the app from assignment 2
 
 - A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
 - An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
