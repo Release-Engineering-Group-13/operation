@@ -7,6 +7,9 @@ services:
       - ./model:/root/model/
     networks:
       - default-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
 
   frontend:
     image: ghcr.io/release-engineering-group-13/app/frontend:latest
@@ -14,6 +17,8 @@ services:
       - "5000:5000"
     networks:
       - default-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   backend: 
     image: ghcr.io/release-engineering-group-13/app/backend:latest
@@ -21,6 +26,8 @@ services:
       - 8081:8081
     networks:
       - default-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - frontend
 
