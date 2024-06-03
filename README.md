@@ -62,3 +62,23 @@ We finished the app from assignment 2
 
 - A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
 - An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
+
+## Assignment 5
+Submission file: TBA
+
+We created an Istio service mesh that has a 90/10 routing of the components, although this will not be noticable since we currently use the same images for v1 and v2. Currently the connection between the model-service, backend and frondend is broken so entering a url will not return a prediction. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
+
+Setup Istio and the rate limiter:
+```bash
+    kubectl apply -f istio.yml
+    kubectl apply -f ratelimiter.yml
+```  
+
+Test rate limiter. The last http response code should be 429 (too many requests) while the preceding codes should be 200:
+```bash
+    for i in {1..46}; do curl -o /dev/null -s -w "%{http_code}\n" http://localhost; done
+```  
+
+TODOS:
+- Design experiments that make use of prometheus metrics
+- Fix connection with frontend
