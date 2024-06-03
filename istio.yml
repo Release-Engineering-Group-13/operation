@@ -60,7 +60,7 @@ spec:
         app: frontend
       annotations: 
         prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
+        prometheus.io/port: "5000"
     spec:
       containers:
         - name: frontend
@@ -83,7 +83,7 @@ spec:
         app: frontend
       annotations: 
         prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
+        prometheus.io/port: "5000"
     spec:
       containers:
         - name: frontend
@@ -106,7 +106,7 @@ spec:
         app: backend
       annotations: 
         prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
+        prometheus.io/port: "8081"
     spec:
       containers:
         - name: backend
@@ -129,7 +129,7 @@ spec:
         app: backend
       annotations: 
         prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
+        prometheus.io/port: "8081"
     spec:
       containers:
         - name: backend
