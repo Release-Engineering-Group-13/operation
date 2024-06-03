@@ -72,7 +72,6 @@ Setup Istio and the rate limiter:
 ```bash
     kubectl apply -f istio.yml
     kubectl apply -f ratelimiter.yml
-    python fetch_model.py
 ```  
 
 Test rate limiter. The last http response code should be 429 (too many requests) while the preceding codes should be 200:
