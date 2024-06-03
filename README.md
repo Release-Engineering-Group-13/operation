@@ -64,7 +64,7 @@ We finished the app from assignment 2
 - An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
 
 ## Assignment 5
-Submission file: TBA
+Submission file: [submission_a5.md](submission%20files/submission_a5.md)
 
 We created an Istio service mesh that has a 90/10 routing of the components, although this will not be noticable since we currently use the same images for v1 and v2. Currently the connection between the model-service, backend and frondend is broken so entering a url will not return a prediction. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
 
