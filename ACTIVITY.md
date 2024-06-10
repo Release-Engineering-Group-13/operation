@@ -85,3 +85,6 @@ Approved PR: https://github.com/Release-Engineering-Group-13/operation/pull/8
 
 
 
+# A6
+
+We all worked on the report in Overleaf

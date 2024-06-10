@@ -79,6 +79,7 @@ Test rate limiter. The last http response code should be 429 (too many requests)
     for i in {1..46}; do curl -o /dev/null -s -w "%{http_code}\n" http://localhost; done
 ```  
 
-TODOS:
-- Design experiments that make use of prometheus metrics
-- Fix connection with frontend
+## Assignment s
+Submission file: [submission_a6.md](submission%20files/submission_a6.md)
+
+We made our initial version of the [report](report.pdf)
