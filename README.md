@@ -1,9 +1,6 @@
 # Operation
 This is the operation repository of group 13. Here you will find relevant links and material for executing and understanding our work. 
 
-## Running
-TODO
-
 ## How to run docker-compose:
 0. If the trained model has not been downloaded yet, install ellipsis and fetch the model. Otherwise, ignore this step
     ```bash
@@ -15,6 +12,35 @@ TODO
     docker-compose up
     ```
 2. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+
+## How to run kubernetes:
+1. install kubectl and minikube
+    '''bash
+    brew install kubectl
+    brew install minikube
+    '''
+2. Start minikube
+    ```bash
+    minikube start
+    ```
+3. Apply the kubernetes configuration
+    ```bash
+    kubectl apply -f kubernetes.yml
+    ```
+4. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+
+## How to run vagrant
+1. Install vagrant and virtualbox
+    ```bash
+    brew install vagrant
+    brew install virtualbox
+    ```
+2. Run the following command
+    ```bash
+    vagrant up
+    ```
+3. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+
 
 ## Repos
 **DISCLAIMER:** These are not the repos to look at for the review process; instead use the links provided in the submission file. This is because some of the features are not in the main branch yet, while the links below point only to there.
