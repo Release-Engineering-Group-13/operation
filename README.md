@@ -88,3 +88,10 @@ We finished the app from assignment 2
 
 - A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
 - An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
+
+## Assignment 5
+Submission file: [submission_a4.md](submission%20files/submission_a5.md)
+
+Added Istio 
+Added environment veriables to the app frontend and backend
+Kubernetes progress update
