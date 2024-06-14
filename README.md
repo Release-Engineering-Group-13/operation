@@ -90,7 +90,7 @@ We finished the app from assignment 2
 - An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
 
 ## Assignment 5
-Submission file: [submission_a4.md](submission%20files/submission_a5.md)
+Submission file: [submission_a5.md](submission%20files/submission_a5.md)
 
 Added Istio 
 Added environment veriables to the app frontend and backend
