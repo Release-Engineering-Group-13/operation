@@ -1,0 +1,32 @@
+# playbookController.yml
+---
+- hosts: controller
+  become: yes 
+  tasks:
+  
+    - name: remove swap
+      shell: "sudo swapoff -a"
+
+    - name: Initialize master node
+      shell: "sudo kubeadm init --apiserver-advertise-address 192.168.56.10 --control-plane-endpoint 192.168.56.10"
+
+    - name: Ensure $HOME/.kube directory exists
+      file:
+        path: $HOME/.kube
+        state: directory
+        mode: '0755'
+    
+    - name: Copy kubeconfig
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: $HOME/.kube/config
+        remote_src: yes
+
+    - name: Change kubeconfig file permission
+      file:
+        path: $HOME/.kube/config 
+        owner: "{{ ansible_effective_user_id }}"
+        group: "{{ ansible_effective_group_id }}"
+
+    - name: install Pod network
+      shell: "kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml"

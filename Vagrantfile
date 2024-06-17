@@ -20,8 +20,8 @@ Vagrant.configure("2") do |config|
   # ------------
   config.vm.define "controller" do |controller|
     controller.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024" # 4GB
-      vb.cpus = "1"
+      vb.memory = "2048" # 4GB
+      vb.cpus = "2" # 1
     end
 
     controller.vm.hostname = "controller"
@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "node#{i}" do |node|
       node.vm.provider "virtualbox" do |vb|
         vb.memory = "1024" # 6GB
-        vb.cpus = "1"
+        vb.cpus = "1" # 2
       end
       
       node.vm.hostname = "node#{i}"

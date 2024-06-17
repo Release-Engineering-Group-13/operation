@@ -69,7 +69,7 @@
       apt:
         update_cache: yes
 
-    - name: Install kubelet, kubeadm, and kubectl
+    - name: Install kubelet, kubeadm, and kubectl (This can take some time)
       apt:
         name:
           - kubelet
@@ -78,7 +78,7 @@
         state: present
         force_apt_get: yes
 
-    - name: Hold kubelet, kubeadm, and kubectl (This can take some time)
+    - name: Hold kubelet, kubeadm, and kubectl
       ansible.builtin.dpkg_selections:
         name: "{{item}}"
         selection: hold
@@ -87,3 +87,12 @@
         - kubeadm
         - kubectl
 
+    - name: Install docker (This can take some time)
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
