@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
       end
       
       node.vm.hostname = "node#{i}"
-      node.vm.network "private_network", ip: ip_base+"#{10+i}"
+      node.vm.network "private_network", ip: ip_base+"#{20+i}"
 
       # node.vm.provision :ansible do |a|
       #   a.compatibility_mode = "2.0"
