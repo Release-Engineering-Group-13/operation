@@ -1,0 +1,89 @@
+# playbook.yml
+---
+- hosts: all
+  become: yes 
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade Python and related packages
+      apt:
+        name:
+          - python3
+          - python3-requests
+          - python3-urllib3
+        state: latest
+        
+    - name: Install apt-transport-https, ca-certificates, curl, and gpg
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gpg
+        state: present
+        force_apt_get: yes
+
+    # - name: Download the Kubernetes APT key
+    #   get_url:
+    #     url: https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key
+    #     dest: /tmp/kubernetes-apt-keyring.gpg
+    #     validate_certs: yes
+    # - name: Download the Kubernetes APT key
+    #   command: "curl -o /tmp/kubernetes-apt-keyring.gpg https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key"
+
+    - name: Ensure /etc/apt/keyrings directory exists
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Remove /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      ansible.builtin.file:
+        path: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+        state: absent
+
+    # - name: Add the Kubernetes APT key
+    #   command: sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg < /tmp/kubernetes-apt-keyring.gpg
+    #   args:
+    #     removes: /tmp/kubernetes-apt-keyring.gpg
+
+    - name: Add the Kubernetes APT key
+      shell: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+    - name: Ensure /etc/apt/sources.list.d directory exists
+      file:
+        path: /etc/apt/sources.list.d
+        state: directory
+        mode: '0755'
+
+    - name: Add Kubernetes repository
+      lineinfile:
+        path: /etc/apt/sources.list.d/kubernetes.list
+        line: 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /'
+        create: yes
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install kubelet, kubeadm, and kubectl
+      apt:
+        name:
+          - kubelet
+          - kubeadm
+          - kubectl
+        state: present
+        force_apt_get: yes
+
+    - name: Hold kubelet, kubeadm, and kubectl (This can take some time)
+      ansible.builtin.dpkg_selections:
+        name: "{{item}}"
+        selection: hold
+      loop:
+        - kubelet
+        - kubeadm
+        - kubectl
+

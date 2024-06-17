@@ -30,17 +30,38 @@ This is the operation repository of group 13. Here you will find relevant links 
 4. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
 
 ## How to run vagrant
-1. Install vagrant and virtualbox
+## How to provision VMs:
+0. Make sure you have an ssh key (use the default values)
+    ```bash
+    ssh-keygen
+    ```
+    Install vagrant and virtualbox
     ```bash
     brew install vagrant
     brew install virtualbox
     ```
-2. Run the following command
+1. Start vagrant
     ```bash
     vagrant up
     ```
-3. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+2. Provision with ansible (Currently it gives an error on the first try but works on the second for some reason)
+    ```bash
+    ansible-playbook -i inventory.cfg playbook.yml
+    ```
 
+## How to provision VMs:
+0. Make sure you have an ssh key (use the default values)
+    ```bash
+    ssh-keygen
+    ```
+1. Start vagrant
+    ```bash
+    vagrant up
+    ```
+2. Provision with ansible (Currently it gives an error on the first try but works on the second for some reason)
+    ```bash
+    ansible-playbook -i inventory.cfg playbookController.yml
+    ```
 
 ## Repos
 **DISCLAIMER:** These are not the repos to look at for the review process; instead use the links provided in the submission file. This is because some of the features are not in the main branch yet, while the links below point only to there.
