@@ -1,9 +1,6 @@
 # Operation
 This is the operation repository of group 13. Here you will find relevant links and material for executing and understanding our work. 
 
-## Running
-TODO
-
 ## How to run docker-compose:
 0. If the trained model has not been downloaded yet, install ellipsis and fetch the model. Otherwise, ignore this step
     ```bash
@@ -15,6 +12,35 @@ TODO
     docker-compose up
     ```
 2. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+
+## How to run kubernetes:
+1. install kubectl and minikube
+    '''bash
+    brew install kubectl
+    brew install minikube
+    '''
+2. Start minikube
+    ```bash
+    minikube start
+    ```
+3. Apply the kubernetes configuration
+    ```bash
+    kubectl apply -f kubernetes.yml
+    ```
+4. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+
+## How to run vagrant
+1. Install vagrant and virtualbox
+    ```bash
+    brew install vagrant
+    brew install virtualbox
+    ```
+2. Run the following command
+    ```bash
+    vagrant up
+    ```
+3. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+
 
 ## Repos
 **DISCLAIMER:** These are not the repos to look at for the review process; instead use the links provided in the submission file. This is because some of the features are not in the main branch yet, while the links below point only to there.
@@ -66,20 +92,6 @@ We finished the app from assignment 2
 ## Assignment 5
 Submission file: [submission_a5.md](submission%20files/submission_a5.md)
 
-We created an Istio service mesh that has a 90/10 routing of the components, although this will not be noticable since we currently use the same images for v1 and v2. Currently the connection between the model-service, backend and frondend is broken so entering a url will not return a prediction. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
-
-Setup Istio and the rate limiter:
-```bash
-    kubectl apply -f istio.yml
-    kubectl apply -f ratelimiter.yml
-```  
-
-Test rate limiter. The last http response code should be 429 (too many requests) while the preceding codes should be 200:
-```bash
-    for i in {1..46}; do curl -o /dev/null -s -w "%{http_code}\n" http://localhost; done
-```  
-
-## Assignment 6
-Submission file: [submission_a6.md](submission%20files/submission_a6.md)
-
-We made our initial version of the [report](report.pdf)
+Added Istio 
+Added environment veriables to the app frontend and backend
+Kubernetes progress update
