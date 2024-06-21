@@ -66,6 +66,8 @@ spec:
         - name: frontend
           image: ghcr.io/release-engineering-group-13/app/frontend:latest
           ports: [ containerPort: 5000 ]
+          env: 
+            - { name: API_URL , value: http://localhost:8081 }
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -89,6 +91,8 @@ spec:
         - name: frontend
           image: ghcr.io/release-engineering-group-13/app/frontend:latest # Change to a test version
           ports: [ containerPort: 5000 ]
+          env: 
+            - { name: API_URL , value: http://localhost:8081 }
 ---
 apiVersion: apps/v1
 kind: Deployment
