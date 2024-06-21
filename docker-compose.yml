@@ -19,6 +19,8 @@ services:
       - default-network
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    environment:
+      API_URL: "http://localhost:8081"
 
   backend: 
     image: ghcr.io/release-engineering-group-13/app/backend:latest
