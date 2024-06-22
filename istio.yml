@@ -67,7 +67,7 @@ spec:
           image: ghcr.io/release-engineering-group-13/app/frontend:latest
           ports: [ containerPort: 5000 ]
           env: 
-            - { name: API_URL , value: http://localhost:8081 }
+            - { name: API_URL , value: http://backend:8081 }
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -92,7 +92,7 @@ spec:
           image: ghcr.io/release-engineering-group-13/app/frontend:latest # Change to a test version
           ports: [ containerPort: 5000 ]
           env: 
-            - { name: API_URL , value: http://localhost:8081 }
+            - { name: API_URL , value: http://backend:8081 }
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -116,6 +116,8 @@ spec:
         - name: backend
           image: ghcr.io/release-engineering-group-13/app/backend:latest
           ports: [ containerPort: 8081 ]
+          env: 
+            - { name: MODEL_SERVICE_URL , value: http://model-service:8080/predict }
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -139,6 +141,8 @@ spec:
         - name: backend
           image: ghcr.io/release-engineering-group-13/app/backend:latest # TODO: change to a test version
           ports: [ containerPort: 8081 ]
+          env: 
+            - { name: MODEL_SERVICE_URL , value: http://model-service:8080/predict }
 ---
 apiVersion: v1
 kind: Service
