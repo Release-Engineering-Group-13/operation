@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/release-engineering-group-13/app/frontend:latest # Change to a test version
+          image: ghcr.io/release-engineering-group-13/app/frontend-colorfull:latest 
           ports: [ containerPort: 5000 ]
           env: 
             - { name: API_URL , value: http://backend:8081 }
