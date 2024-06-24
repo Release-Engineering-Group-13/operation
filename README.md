@@ -32,35 +32,21 @@ This is the operation repository of group 13. Here you will find relevant links 
 ## How to run vagrant
 ## How to provision VMs:
 0. Make sure you have an ssh key (use the default values)
-    ```bash
+    ```bash:
     ssh-keygen
     ```
-    Install vagrant and virtualbox
+    Install vagrant and virtualbox:
     ```bash
     brew install vagrant
     brew install virtualbox
     ```
-1. Start vagrant
+1. Start vagrant:
     ```bash
     vagrant up
     ```
-2. Provision with ansible (Currently it gives an error on the first try but works on the second for some reason)
+2. Provision with ansible playbooks, and copy kubeconfig to host machine:
     ```bash
-    ansible-playbook -i inventory.cfg playbook.yml
-    ```
-
-## How to provision VMs:
-0. Make sure you have an ssh key (use the default values)
-    ```bash
-    ssh-keygen
-    ```
-1. Start vagrant
-    ```bash
-    vagrant up
-    ```
-2. Provision with ansible (Currently it gives an error on the first try but works on the second for some reason)
-    ```bash
-    ansible-playbook -i inventory.cfg playbookController.yml
+    ./run.sh
     ```
 
 ## Repos

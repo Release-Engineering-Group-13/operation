@@ -1,6 +1,7 @@
 # playbook.yml
 ---
 - hosts: all
+  name: Install Dependencies On Nodes
   become: yes 
   tasks:
 
@@ -96,3 +97,6 @@
       service:
         name: docker
         state: started
+        
+    - name: remove swap
+      shell: "swapoff -a"

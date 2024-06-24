@@ -16,12 +16,14 @@ Vagrant.configure("2") do |config|
     chown -R vagrant:vagrant /home/vagrant/.ssh
   SHELL
 
+
   # CONTROLLER
   # ------------
   config.vm.define "controller" do |controller|
     controller.vm.provider "virtualbox" do |vb|
       vb.memory = "2048" # 4GB
       vb.cpus = "2" # 1
+      vb.gui = true
     end
 
     controller.vm.hostname = "controller"

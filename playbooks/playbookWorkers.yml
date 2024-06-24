@@ -1,6 +1,7 @@
 # playbookWorkers.yml
 ---
 - hosts: controller
+  name: Get Cluster Join Command
   become: yes 
   gather_facts: no
   tasks:
@@ -16,6 +17,7 @@
 
 
 - hosts: workers
+  name: Initialize Worker Nodes
   become: yes
   gather_facts: no
   tasks:
