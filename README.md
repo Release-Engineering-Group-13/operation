@@ -1,7 +1,7 @@
 # Operation
 This is the operation repository of group 13. Here you will find relevant links and material for executing and understanding our work. First, there are instructions on different ways of running the project. At the bottom, there are notes about each assignment.
 
-## Repos
+## Repositories
 - [model-training](https://github.com/Release-Engineering-Group-13/model-training)
 - [lib-ml](https://github.com/Release-Engineering-Group-13/lib-ml)
 - [model-service](https://github.com/Release-Engineering-Group-13/model-service)
@@ -26,9 +26,10 @@ This is the operation repository of group 13. Here you will find relevant links 
     brew install kubectl
     brew install minikube
     ```
-2. Start minikube
+2. Start minikube and enable the ingress addon
     ```bash
     minikube start --driver=docker
+    minikube addons enable ingress
     ```
 3. Apply the kubernetes configuration
     ```bash
@@ -62,33 +63,29 @@ minikube dashboard
     ```
 4. You can now access the kubernetes cluster running on the VMs on your host machine's kubectl.
 
-## Assignment 1
-Everything that was needed is implemented. See the [model-training repository](https://github.com/Release-Engineering-Group-13/model-training).
 
-Link to elaboration on code quality: [codequality.md](Assignment%201/codequality.md) 
+## How to run Istio
+For detailed information, see the notes on Assignment 5.
+1. Install kubernetes/minikube as described in "How to run kubernetes". 
 
-## Assignment 2
-With the way we fetch the model (by downloading it when starting the model-service container), we didn't have a need for a volume mount in the docker-compose.
+2. [Install Istio](https://istio.io/latest/docs/setup/getting-started/#download)
 
-## Assignment 3
-The VMs start up, albeit with less than the required amount of CPUs and memory, because our computers could not handle that. Additionally, the the Ansible playbooks are ran through a seperate bash command (./run.sh), as Ansible didn't like something about private keys being too public. This file also makes it so that kubectl for the cluster can be used from the host machine.
+3. Install Istio into the current cluster:
+    ```bash
+    istioctl install
+    ```
 
-The kubernetes cluster is initialized on the VMs, but each node's kube-proxy pod keeps crashing, making the cluster not work. Instead, kubernetes can be run through minikube.
+4. Install Istio's Prometheus, Jaeger, and Grafana addons (change the istio version if you have installed a different one):
+    ```bash
+    kubectl apply -f istio-1.22.1/samples/addons/prometheus.yaml
+    kubectl apply -f istio-1.22.1/samples/addons/jaeger.yaml
+    kubectl apply -f istio-1.22.1/samples/addons/grafana.yaml
+    ```
 
-## Assignment 4
-The tests are added
-We finished the app from assignment 2
-
-- A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
-- An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
-
-## Assignment 5
-We created an Istio service mesh that has a 90/10 routing of the components, although currently only the app frontend has a experimental version. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
-
-Setup Kubernetes, Istio and the rate limiter:
-```bash
-    kubectl apply -f Provisioning
-```  
+5. Setup Kubernetes, Istio and the rate limiter:
+    ```bash
+        kubectl apply -f Provisioning
+    ```  
 
 On some systems the traffic routing results in a 'no healthy upstream' error. In that case, follow the steps below to access the application. Do keep in mind that you will always be referred to the main version of the application since traffic routing is disabled, but everything else remains the same, including use of other commands mentioned in this section of the README.  
 ```bash
@@ -114,3 +111,20 @@ Accessing the application and viewing metrics can be done by executing:
 Once a tunnel has been opened and the grafana entry portal has been started with the above command, the grafana dashboard Grafana.json in folder Monitoring can be viewed by navigating to the '+' at the top right of the Grafana page. There, click on the '+', then select 'Import dashboard'. This will open a page where you can import Grafana.json from the Monitoring folder. Afterwards, it'll be ready for use.
 
 
+## Assignment 1
+Everything that was needed is implemented. See the [model-training repository](https://github.com/Release-Engineering-Group-13/model-training).
+
+Link to elaboration on code quality: [codequality.md](Assignment%201/codequality.md) 
+
+## Assignment 2
+With the way we fetch the model (by downloading it when starting the model-service container), we didn't have a need for a volume mount in the docker-compose.
+
+## Assignment 3
+The VMs start up, albeit with less than the required amount of CPUs and memory, because our computers could not handle that. Additionally, the the Ansible playbooks are ran through a seperate bash command (./run.sh), as Ansible didn't like something about private keys being too public. This file also makes it so that kubectl for the cluster can be used from the host machine.
+
+The kubernetes cluster is initialized on the VMs, but each node's kube-proxy pod keeps crashing, making the cluster not work. Instead, kubernetes can be run through minikube.
+
+## Assignment 4
+
+## Assignment 5
+We created an Istio service mesh that has a 90/10 routing of the components, although currently only the app frontend has a experimental version. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
