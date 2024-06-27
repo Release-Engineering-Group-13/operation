@@ -47,22 +47,25 @@ To access the dashboard, run
 minikube dashboard
 ```
 
-## How to run Vagrant
-1. Install vagrant and virtualbox
+
+## How to provision VMs:
+0. Make sure you have an ssh key (use the default values)
+    ```bash:
+    ssh-keygen
+    ```
+    Install vagrant and virtualbox:
     ```bash
     brew install vagrant
     brew install virtualbox
     ```
-2. Run the following command to start the VMs
+1. Start vagrant:
     ```bash
     vagrant up
     ```
-3. Run the following command to provision the VMs
+2. Provision with ansible playbooks, and copy kubeconfig to host machine:
     ```bash
     ./run.sh
     ```
-4. You can now access the kubernetes cluster running on the VMs on your host machine's kubectl.
-
 
 ## How to run Istio
 For detailed information, see the notes on Assignment 5.
@@ -131,6 +134,7 @@ The VMs start up, albeit with less than the required amount of CPUs and memory, 
 The kubernetes cluster is initialized on the VMs, but each node's kube-proxy pod keeps crashing, making the cluster not work. Instead, kubernetes can be run through minikube.
 
 ## Assignment 4
+For the tests, see the [model-training repository](https://github.com/Release-Engineering-Group-13/model-training).
 
 ## Assignment 5
 We created an Istio service mesh that has a 90/10 routing of the components, although currently only the app frontend has a experimental version. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
