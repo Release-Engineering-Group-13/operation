@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/release-engineering-group-13/app/backend:latest # TODO: change to a test version
+          image: ghcr.io/release-engineering-group-13/app/backend:latest 
           ports: [ containerPort: 8081 ]
           env: 
             - { name: MODEL_SERVICE_URL , value: http://model-service:8080/predict }

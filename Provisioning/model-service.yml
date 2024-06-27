@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
         - name: model-service
-          image: ghcr.io/release-engineering-group-13/model-service:latest # TODO: change to a test version
+          image: ghcr.io/release-engineering-group-13/model-service:latest 
           ports: [ containerPort: 8080 ]
 ---
 apiVersion: v1
