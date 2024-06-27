@@ -66,9 +66,15 @@ minikube dashboard
 
 ## How to run Istio
 For detailed information, see the notes on Assignment 5.
-1. Install kubernetes/minikube as described in "How to run kubernetes". 
+1. Install kubernetes/minikube as described in "How to run kubernetes":
+    ```bash
+    brew install kubectl
+    brew install minikube
+    minikube start --driver=docker
+    minikube addons enable ingress
+    ```
 
-2. [Install Istio](https://istio.io/latest/docs/setup/getting-started/#download)
+2. [Download Istio](https://istio.io/latest/docs/setup/getting-started/#download)
 
 3. Install Istio into the current cluster:
     ```bash
