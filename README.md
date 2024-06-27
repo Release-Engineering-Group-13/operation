@@ -99,7 +99,16 @@ Setup Istio and the rate limiter:
     kubectl apply -f Provisioning
 ```  
 
-Test rate limiter. The last http response code should be 429 (too many requests) while the preceding codes should be 200:
+On some systems the traffic routing results in a 'no healthy upstream' error. In that case, follow the steps below to access the application. Do keep in mind that you will always be referred to the main version of the application since traffic routing is disabled, but everything else remains the same, including use of other commands mentioned in this section of the README.  
+```bash
+    kubectl delete -f Provisioning
+    kubectl label ns default istio-injection=disabled --overwrite 
+    kubectl apply -f Provisioning
+    kubectl delete -f Provisioning/istio-gateway.yml
+    kubectl apply -f istio-minimal.yml
+```  
+
+The rate limiter can be tested with the below command. The last http response code should be 429 (too many requests) while the preceding codes should be 200:
 ```bash
     for i in {1..46}; do curl -o /dev/null -s -w "%{http_code}\n" http://localhost; done
 ```  
