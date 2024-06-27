@@ -28,7 +28,7 @@ This is the operation repository of group 13. Here you will find relevant links 
     ```
 2. Start minikube
     ```bash
-    minikube start
+    minikube start --driver=docker
     ```
 3. Apply the kubernetes configuration
     ```bash
