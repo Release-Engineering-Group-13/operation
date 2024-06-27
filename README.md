@@ -9,16 +9,12 @@ This is the operation repository of group 13. Here you will find relevant links 
 - [app](https://github.com/Release-Engineering-Group-13/app)
 
 ## How to run with docker-compose:
-0. If the trained model has not been downloaded yet, install ellipsis and fetch the model. Otherwise, ignore this step
-    ```bash
-    pip install ellipsis
-    python fetch_model.py
-    ```
-1. Pull and run the images 
+1. [Install Docker](https://docs.docker.com/engine/install/)
+2. Pull and run the images 
      ```bash
     docker-compose up
     ```
-2. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the (interactive) model service API documentation through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+3. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the (interactive) model service API documentation through [localhost:8080/apidocs](http://localhost:8080/apidocs).
 
 ## How to run kubernetes:
 1. install kubectl and minikube
@@ -39,7 +35,7 @@ This is the operation repository of group 13. Here you will find relevant links 
     ```bash
     minikube tunnel
     ```
-5. Access the frontend through at [localhost/frontend/](http://localhost/frontend/) to make a request to the model-service. You can also access the model-service through [localhost/model/apidocs/](http://localhost/model/apidocs/).
+5. Access the frontend through at [http://localhost/frontend/](http://localhost/frontend/) to make a request to the model-service. You can also access the model-service through [http://localhost/model/apidocs/](http://localhost/model/apidocs/).
 
 ### Kubernetes dashboard
 To access the dashboard, run
@@ -49,7 +45,7 @@ minikube dashboard
 
 
 ## How to provision VMs:
-0. Make sure you have an ssh key (use the default values)
+1. Make sure you have an ssh key (use the default values)
     ```bash:
     ssh-keygen
     ```
@@ -58,11 +54,16 @@ minikube dashboard
     brew install vagrant
     brew install virtualbox
     ```
-1. Start vagrant:
+    Make sure you have python and pip installed and run:
+    ```bash
+    pip install ansible
+    ```
+    Add your python installation to PATH.
+2. Start vagrant:
     ```bash
     vagrant up
     ```
-2. Provision with ansible playbooks, and copy kubeconfig to host machine:
+3. Provision with ansible playbooks, and copy kubeconfig to host machine:
     ```bash
     ./run.sh
     ```
