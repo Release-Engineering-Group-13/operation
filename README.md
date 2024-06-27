@@ -34,9 +34,19 @@ This is the operation repository of group 13. Here you will find relevant links 
     ```bash
     kubectl apply -f kubernetes.yml
     ```
-4. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+4. Tunnel minikube
+    ```bash
+    minikube tunnel
+    ```
+5. Access the frontend through at [localhost/frontend/](http://localhost/frontend/) to make a request to the model-service. You can also access the model-service through [localhost/model/apidocs/](http://localhost/model/apidocs/).
 
-## How to run vagrant
+### Kubernetes dashboard
+To access the dashboard, run
+```bash
+minikube dashboard
+```
+
+## How to run Vagrant
 1. Install vagrant and virtualbox
     ```bash
     brew install vagrant
@@ -46,11 +56,11 @@ This is the operation repository of group 13. Here you will find relevant links 
     ```bash
     vagrant up
     ```
-3. Run the following command
+3. Run the following command to provision the VMs
     ```bash
-    vagrant up
+    ./run.sh
     ```
-4. Access the frontend through at [localhost:5000](http://localhost:5000) to make a request to the model-service. You can also access the model-service through [localhost:8080/apidocs](http://localhost:8080/apidocs).
+4. You can now access the kubernetes cluster running on the VMs on your host machine's kubectl.
 
 ## Assignment 1
 Everything that was needed is implemented. See the [model-training repository](https://github.com/Release-Engineering-Group-13/model-training).
@@ -61,17 +71,11 @@ Link to elaboration on code quality: [codequality.md](Assignment%201/codequality
 With the way we fetch the model (by downloading it when starting the model-service container), we didn't have a need for a volume mount in the docker-compose.
 
 ## Assignment 3
-Submission file: [submission_a3.md](submission%20files/submission_a3.md)
+The VMs start up, albeit with less than the required amount of CPUs and memory, because our computers could not handle that. Additionally, the the Ansible playbooks are ran through a seperate bash command (./run.sh), as Ansible didn't like something about private keys being too public. This file also makes it so that kubectl for the cluster can be used from the host machine.
 
-We did not have a lot of time, so for this assignment specifically there is not a lot. \
-We did not really figure out how to deploy a kubernetes, so any hints on that would be very welcome!
-
-- A basic Vagrantfile was set up in the operation repo that initializes the 3 VMs
-- An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
+The kubernetes cluster is initialized on the VMs, but each node's kube-proxy pod keeps crashing, making the cluster not work. Instead, kubernetes can be run through minikube.
 
 ## Assignment 4
-Submission file: [submission_a4.md](submission%20files/submission_a4.md)
-
 The tests are added
 We finished the app from assignment 2
 
@@ -79,8 +83,6 @@ We finished the app from assignment 2
 - An initial kubernetes.yml is made that does the same as the docker-compose, but it just runs on the host machine.
 
 ## Assignment 5
-Submission file: [submission_a5.md](submission%20files/submission_a5.md)
-
 Added Istio 
 Added environment veriables to the app frontend and backend
 Kubernetes progress update
