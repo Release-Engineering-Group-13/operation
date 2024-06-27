@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-service-v1
+  labels: { app: model-service , version: v1}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-service
+  template:
+    metadata:
+      labels:
+        app: model-service
+      annotations: 
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+    spec:
+      containers:
+        - name: model-service
+          image: ghcr.io/release-engineering-group-13/model-service:latest
+          ports: [ containerPort: 8080 ]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-service-v2
+  labels: { app: model-service , version: v2}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: model-service
+  template:
+    metadata:
+      labels:
+        app: model-service
+      annotations: 
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+    spec:
+      containers:
+        - name: model-service
+          image: ghcr.io/release-engineering-group-13/model-service:latest 
+          ports: [ containerPort: 8080 ]
+---
+apiVersion: v1
+kind: Service
+metadata: { name: model-service }
+spec:
+  selector:
+    app: model-service
+  ports:
+    - { name: http , port: 8080, targetPort: 8080 }
