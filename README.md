@@ -94,7 +94,7 @@ Submission file: [submission_a5.md](submission%20files/submission_a5.md)
 
 We created an Istio service mesh that has a 90/10 routing of the components, although currently only the app frontend has a experimental version. Metrics can be viewed by visiting the prometheus dashboard while the cluster is active. We also implemented a rate limiter that caps the number of requests per minute to 45. 
 
-Setup Istio and the rate limiter:
+Setup Kubernetes, Istio and the rate limiter:
 ```bash
     kubectl apply -f Provisioning
 ```  
